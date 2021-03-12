@@ -7,11 +7,16 @@ public class PickupBehavior : MonoBehaviour
     public float throwForce = 10f;
     public Camera cm;
 
+    public AudioClip boxPickupSFX;
+    public AudioClip boxThrowSFX;
+    public AudioClip teleportSFX;
 
     bool isPickedUp;
     GameObject throwObject;
     CharacterController cc;
-    Rigidbody rb; 
+    Rigidbody rb;
+
+    
     
     
     void Start()
@@ -57,29 +62,31 @@ public class PickupBehavior : MonoBehaviour
         if(other.CompareTag("ThrowObject")){
 
             if(Input.GetKeyDown(KeyCode.Space) && !isPickedUp){
-            //Destroy(other);
-
-
-                other.gameObject.transform.parent = cm.transform;
-
-                throwObject = other.gameObject;
-                rb = throwObject.GetComponent<Rigidbody>();
-                rb.isKinematic = true;
-                //rb.useGravity = false;
-
-                throwObject.transform.localPosition = new Vector3(0, 0, 1);
-                throwObject.transform.rotation = new Quaternion(0, 0, 0, 0);
-                //throwObject.transform.localScale = new Vector3(0, 0, 0);
-
-                isPickedUp = true;
-                Debug.Log("Item Was Picked Up");
-
-
+                PickupBox(other);
 
             }
 
         }
 
+    }
+
+    private void PickupBox(Collider other)
+    {
+        AudioSource.PlayClipAtPoint(boxPickupSFX, transform.position);
+
+        other.gameObject.transform.parent = cm.transform;
+
+        throwObject = other.gameObject;
+        rb = throwObject.GetComponent<Rigidbody>();
+        rb.isKinematic = true;
+        //rb.useGravity = false;
+
+        throwObject.transform.localPosition = new Vector3(0, 0, 1);
+        throwObject.transform.rotation = new Quaternion(0, 0, 0, 0);
+        //throwObject.transform.localScale = new Vector3(0, 0, 0);
+
+        isPickedUp = true;
+        Debug.Log("Item Was Picked Up");
     }
 
 
@@ -101,7 +108,7 @@ public class PickupBehavior : MonoBehaviour
     private void ThrowObject(){
 
         Debug.Log("Item Was Thrown");
-        
+        AudioSource.PlayClipAtPoint(boxThrowSFX, transform.position);
 
         //rb.useGravity = true;
         rb.isKinematic = false;
@@ -117,7 +124,7 @@ public class PickupBehavior : MonoBehaviour
     private void Teleport(){
 
         Debug.Log("Teleported!");
-
+        AudioSource.PlayClipAtPoint(teleportSFX, transform.position);
 
         cc.enabled = false;
         transform.position = throwObject.transform.position + Vector3.up;
