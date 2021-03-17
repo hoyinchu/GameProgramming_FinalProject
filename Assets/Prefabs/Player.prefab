@@ -150,6 +150,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwForce: 20
   cm: {fileID: 3674959036964715179}
+  boxPickupSFX: {fileID: 8300000, guid: 45aa0be5c2aa48f47bd558dbcb9a5e82, type: 3}
+  boxThrowSFX: {fileID: 8300000, guid: 17cc36884a6c60f4f812e95612d21223, type: 3}
+  teleportSFX: {fileID: 8300000, guid: 35a4a65a5ef85fb4083d607f2b88342b, type: 3}
 --- !u!135 &3674959036234529746
 SphereCollider:
   m_ObjectHideFlags: 0
