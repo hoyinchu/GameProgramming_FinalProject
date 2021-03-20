@@ -31,14 +31,14 @@ public class PickupBehavior : MonoBehaviour
     void Update()
     {
         if(isPickedUp){
-            if(Input.GetButtonDown("Fire1")){
+            if(Input.GetButtonDown("Fire2")){
 
                 DropObject();
 
 
             }
 
-            if(Input.GetButtonDown("Fire2")){
+            if(Input.GetButtonDown("Fire1")){
 
                 ThrowObject();
 
@@ -61,7 +61,7 @@ public class PickupBehavior : MonoBehaviour
         
         if(other.CompareTag("ThrowObject")){
 
-            if(Input.GetKeyDown(KeyCode.Space) && !isPickedUp){
+            if(Input.GetKeyDown(KeyCode.E) && !isPickedUp){
                 PickupBox(other);
 
             }

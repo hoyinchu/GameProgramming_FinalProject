@@ -5,16 +5,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 10;
-    public float jumpHeight = 10;
+    public float jumpHeight = 2;
     public float gravity = 9.801f;
     public float airControl = 10;
     CharacterController controller; 
     Vector3 input;
     Vector3 moveDirection;
+    Rigidbody playerRigidBody;
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        playerRigidBody = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -32,17 +35,17 @@ public class PlayerController : MonoBehaviour
 
             moveDirection = input;
 
-            /*
+            
             if(Input.GetButton("Jump")) {
 
                 moveDirection.y = Mathf.Sqrt(2 * jumpHeight * gravity);
 
             }
-            else { */
+            else { 
 
                 moveDirection.y = 0.0f;
 
-            //}
+            }
         }
         else {
 
