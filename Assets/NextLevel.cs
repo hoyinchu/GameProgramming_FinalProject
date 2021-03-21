@@ -5,19 +5,16 @@ using UnityEngine;
 public class NextLevel : MonoBehaviour
 {
     private LevelManager levelM;
-
-        void Start()
-    {
-        
-        this.levelM = GameObject.Find("LevelManager").GetComponent<LevelManager>();
-        
+    void Start()
+    {   
+        this.levelM = GameObject.Find("LevelManager").GetComponent<LevelManager>();      
     }
 
     private void OnTriggerEnter(Collider other){
 
-             if(other.CompareTag("Player")){
-
-                levelM.LevelBeat();
+        if(other.CompareTag("Player")){
+            levelM.LevelBeat();
         }
     }
+
 }

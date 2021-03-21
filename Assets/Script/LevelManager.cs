@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-  [SerializeField]
+    [SerializeField]
     public bool isGameOver = false; 
     public string nextLevel;
     //public Text winText;
@@ -45,7 +45,7 @@ public class LevelManager : MonoBehaviour
 
         isGameOver = true;
 
-       Invoke("LoadCurrentLevel", 2);
+        Invoke("LoadCurrentLevel", 2);
         }
     }
 

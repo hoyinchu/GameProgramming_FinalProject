@@ -10,12 +10,14 @@ public class PickupBehavior : MonoBehaviour
     public AudioClip boxPickupSFX;
     public AudioClip boxThrowSFX;
     public AudioClip teleportSFX;
+    public float teleportCooldown = 2f;
 
     bool isPickedUp;
     GameObject throwObject;
     CharacterController cc;
     Rigidbody rb;
 
+    private float lastTimeTeleported = 0f;
     
     
     
@@ -47,8 +49,8 @@ public class PickupBehavior : MonoBehaviour
         }
         else{
 
-            if(Input.GetKeyDown(KeyCode.T) && throwObject != null){
-
+            if(Input.GetKeyDown(KeyCode.T) && isTeleportAllowed())
+            {
                 Teleport();
             }
 
@@ -100,9 +102,6 @@ public class PickupBehavior : MonoBehaviour
       
 
         isPickedUp = false;
-
-
-
     }
 
     private void ThrowObject(){
@@ -123,6 +122,8 @@ public class PickupBehavior : MonoBehaviour
 
     private void Teleport(){
 
+        lastTimeTeleported = Time.time;
+
         Debug.Log("Teleported!");
         AudioSource.PlayClipAtPoint(teleportSFX, transform.position);
 
@@ -132,5 +133,10 @@ public class PickupBehavior : MonoBehaviour
         cc.enabled = true;
         Debug.Log("Player Position: " + transform.position);
         Debug.Log("Child Position: " + throwObject.transform.position);
+    }
+
+    private bool isTeleportAllowed()
+    {
+        return(Time.time > lastTimeTeleported + teleportCooldown & throwObject != null);
     }
 }

@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     Vector3 input;
     Vector3 moveDirection;
     Rigidbody playerRigidBody;
+    bool isOnSlope = false;
+    float maxSlopeAngle = 0.6f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +32,9 @@ public class PlayerController : MonoBehaviour
         input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized;
         input *= moveSpeed;
 
-        if(controller.isGrounded) {
+        if(controller.isGrounded & !isOnSlope) {
+
+            
 
             //we can jump
 
@@ -58,6 +63,9 @@ public class PlayerController : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
     }
-    
-    
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        isOnSlope = hit.normal.y <= maxSlopeAngle;
+    }
+
 }
