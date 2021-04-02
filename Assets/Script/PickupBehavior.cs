@@ -12,7 +12,7 @@ public class PickupBehavior : MonoBehaviour
     public AudioClip teleportSFX;
     public float teleportCooldown = 2f;
 
-    bool isPickedUp;
+    public static bool isPickedUp;
     GameObject throwObject;
     CharacterController cc;
     Rigidbody rb;
@@ -74,6 +74,7 @@ public class PickupBehavior : MonoBehaviour
 
     private void PickupBox(Collider other)
     {
+        isPickedUp = true;
         AudioSource.PlayClipAtPoint(boxPickupSFX, transform.position);
 
         other.gameObject.transform.parent = cm.transform;
@@ -87,7 +88,7 @@ public class PickupBehavior : MonoBehaviour
         throwObject.transform.rotation = new Quaternion(0, 0, 0, 0);
         //throwObject.transform.localScale = new Vector3(0, 0, 0);
 
-        isPickedUp = true;
+        
         Debug.Log("Item Was Picked Up");
     }
 
