@@ -9,7 +9,19 @@ EditorUserSettings:
       value: 22424703114646680e0b0227036c73150012147b623d28393930
       flags: 0
     RecentlyUsedScenePath-1:
-      value: 22424703114646680e0b0227036c6c111b07142f1f2b233e2867083debf42d
+      value: 22424703114646680e0b0227036c731500121478623d28393930
+      flags: 0
+    RecentlyUsedScenePath-2:
+      value: 22424703114646680e0b0227036c72111f19352f223d68252320092a
+      flags: 0
+    RecentlyUsedScenePath-3:
+      value: 22424703114646682e27410439636a39562719292768162222662e10cbad1211a2d21fa9d73b3c377932fd3344085070c1090c05f318450f1403f25f5fea1e1a05dc
+      flags: 0
+    RecentlyUsedScenePath-4:
+      value: 22424703114646682e27410439636a39562719292768162222662e10cbad1211a2d21fa9d73b3c377932fd3344085370c1090c05f318450f1403f25c5fea1e1a05dc
+      flags: 0
+    RecentlyUsedScenePath-5:
+      value: 22424703114646680e074104196378253f57282b2f2369032e2c1336f1af303defe878fce9332b25
       flags: 0
     vcSharedLogLevel:
       value: 0d5e400f0650
@@ -24,4 +36,4 @@ EditorUserSettings:
   m_VCProjectOverlayIcons: 1
   m_VCHierarchyOverlayIcons: 1
   m_VCOtherOverlayIcons: 1
-  m_VCAllowAsyncUpdate: 0
+  m_VCAllowAsyncUpdate: 1
