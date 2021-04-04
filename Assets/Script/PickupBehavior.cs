@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PickupBehavior : MonoBehaviour
 {
@@ -11,11 +13,18 @@ public class PickupBehavior : MonoBehaviour
     public AudioClip boxThrowSFX;
     public AudioClip teleportSFX;
     public float teleportCooldown = 2f;
+    public Image note;
+    public Image reticleImage;
+    public GameObject currentNote;
+    public Text noteText;
+
+
 
     public static bool isPickedUp;
     GameObject throwObject;
     CharacterController cc;
     Rigidbody rb;
+    Text newText;
 
     private float lastTimeTeleported = 0f;
     
@@ -25,14 +34,34 @@ public class PickupBehavior : MonoBehaviour
     {
         isPickedUp = false;
         cc = gameObject.GetComponent<CharacterController>();
+        note.gameObject.SetActive(true);
+        newText = GameObject.FindGameObjectWithTag("NoteAsset").GetComponent<Text>();
+
 
         //child = GameObject.FindGameObjectWithTag("ThrowObject");
-    } 
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if(isPickedUp){
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            note.gameObject.SetActive(false);
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            note.gameObject.SetActive(true);
+        }
+        if (note.gameObject.activeSelf)
+        {
+            reticleImage.gameObject.SetActive(false);
+        }
+        else
+        {
+            reticleImage.gameObject.SetActive(true);
+        }
+
+        if (isPickedUp){
             if(Input.GetButtonDown("Fire2")){
 
                 DropObject();
@@ -55,6 +84,28 @@ public class PickupBehavior : MonoBehaviour
             }
 
 
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
+        {
+            if (hit.collider.CompareTag("NoteAsset"))
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    newText = hit.transform.GetComponentInChildren<Text>();
+                    noteText.text = newText.text;
+                    
+                    currentNote.SetActive(true);
+                }
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    currentNote.SetActive(false);
+                }
+            }
         }
     }
 
