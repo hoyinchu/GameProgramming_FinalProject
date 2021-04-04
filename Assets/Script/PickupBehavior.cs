@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PickupBehavior : MonoBehaviour
 {
@@ -11,45 +13,76 @@ public class PickupBehavior : MonoBehaviour
     public AudioClip boxThrowSFX;
     public AudioClip teleportSFX;
     public float teleportCooldown = 2f;
+    public Image note;
+    public Image reticleImage;
+    public GameObject currentNote;
+    public Text noteText;
+
+
 
     public static bool isPickedUp;
     GameObject throwObject;
     CharacterController cc;
     Rigidbody rb;
+    Text newText;
 
     private float lastTimeTeleported = 0f;
-    
-    
-    
+
+
+
     void Start()
     {
         isPickedUp = false;
         cc = gameObject.GetComponent<CharacterController>();
+        note.gameObject.SetActive(true);
+        newText = GameObject.FindGameObjectWithTag("NoteAsset").GetComponent<Text>();
+
 
         //child = GameObject.FindGameObjectWithTag("ThrowObject");
-    } 
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if(isPickedUp){
-            if(Input.GetButtonDown("Fire2")){
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            note.gameObject.SetActive(false);
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            note.gameObject.SetActive(true);
+        }
+        if (note.gameObject.activeSelf)
+        {
+            reticleImage.gameObject.SetActive(false);
+        }
+        else
+        {
+            reticleImage.gameObject.SetActive(true);
+        }
+
+        if (isPickedUp)
+        {
+            if (Input.GetButtonDown("Fire2"))
+            {
 
                 DropObject();
 
 
             }
 
-            if(Input.GetButtonDown("Fire1")){
+            if (Input.GetButtonDown("Fire1"))
+            {
 
                 ThrowObject();
 
 
             }
         }
-        else{
+        else
+        {
 
-            if(Input.GetKeyDown(KeyCode.T) && isTeleportAllowed())
+            if (Input.GetKeyDown(KeyCode.T) && isTeleportAllowed())
             {
                 Teleport();
             }
@@ -58,12 +91,37 @@ public class PickupBehavior : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other){
+    private void FixedUpdate()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
+        {
+            if (hit.collider.CompareTag("NoteAsset"))
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    newText = hit.transform.GetComponentInChildren<Text>();
+                    noteText.text = newText.text;
 
-        
-        if(other.CompareTag("ThrowObject")){
+                    currentNote.SetActive(true);
+                }
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    currentNote.SetActive(false);
+                }
+            }
+        }
+    }
 
-            if(Input.GetKeyDown(KeyCode.E) && !isPickedUp){
+    private void OnTriggerStay(Collider other)
+    {
+
+
+        if (other.CompareTag("ThrowObject"))
+        {
+
+            if (Input.GetKeyDown(KeyCode.E) && !isPickedUp)
+            {
                 PickupBox(other);
 
             }
@@ -88,24 +146,26 @@ public class PickupBehavior : MonoBehaviour
         throwObject.transform.rotation = new Quaternion(0, 0, 0, 0);
         //throwObject.transform.localScale = new Vector3(0, 0, 0);
 
-        
+
         Debug.Log("Item Was Picked Up");
     }
 
 
-    private void DropObject(){
+    private void DropObject()
+    {
 
         Debug.Log("Item Was Dropped");
-        
+
         throwObject.transform.parent = null;
         rb.isKinematic = false;
         //rb.useGravity = true;
-      
+
 
         isPickedUp = false;
     }
 
-    private void ThrowObject(){
+    private void ThrowObject()
+    {
 
         Debug.Log("Item Was Thrown");
         AudioSource.PlayClipAtPoint(boxThrowSFX, transform.position);
@@ -115,13 +175,14 @@ public class PickupBehavior : MonoBehaviour
 
         rb.AddForce(cm.transform.forward * throwForce, ForceMode.Impulse);
         throwObject.transform.parent = null;
-        
+
         //child = null;
         isPickedUp = false;
 
     }
 
-    private void Teleport(){
+    private void Teleport()
+    {
 
         lastTimeTeleported = Time.time;
 
@@ -138,6 +199,6 @@ public class PickupBehavior : MonoBehaviour
 
     private bool isTeleportAllowed()
     {
-        return(Time.time > lastTimeTeleported + teleportCooldown & throwObject != null);
+        return (Time.time > lastTimeTeleported + teleportCooldown & throwObject != null);
     }
 }
