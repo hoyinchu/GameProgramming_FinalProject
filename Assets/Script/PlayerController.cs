@@ -5,16 +5,22 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 10;
-    public float jumpHeight = 10;
+    public float jumpHeight = 2;
     public float gravity = 9.801f;
     public float airControl = 10;
     CharacterController controller; 
     Vector3 input;
     Vector3 moveDirection;
+    Rigidbody playerRigidBody;
+    bool isOnSlope = false;
+    float maxSlopeAngle = 0.6f;
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        playerRigidBody = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -26,23 +32,25 @@ public class PlayerController : MonoBehaviour
         input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized;
         input *= moveSpeed;
 
-        if(controller.isGrounded) {
+        if(controller.isGrounded & !isOnSlope) {
+
+            
 
             //we can jump
 
             moveDirection = input;
 
-            /*
+            
             if(Input.GetButton("Jump")) {
 
                 moveDirection.y = Mathf.Sqrt(2 * jumpHeight * gravity);
 
             }
-            else { */
+            else { 
 
                 moveDirection.y = 0.0f;
 
-            //}
+            }
         }
         else {
 
@@ -55,6 +63,9 @@ public class PlayerController : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
     }
-    
-    
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        isOnSlope = hit.normal.y <= maxSlopeAngle;
+    }
+
 }

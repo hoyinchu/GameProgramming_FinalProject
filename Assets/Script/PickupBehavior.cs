@@ -10,12 +10,14 @@ public class PickupBehavior : MonoBehaviour
     public AudioClip boxPickupSFX;
     public AudioClip boxThrowSFX;
     public AudioClip teleportSFX;
+    public float teleportCooldown = 2f;
 
-    bool isPickedUp;
+    public static bool isPickedUp;
     GameObject throwObject;
     CharacterController cc;
     Rigidbody rb;
 
+    private float lastTimeTeleported = 0f;
     
     
     
@@ -31,14 +33,14 @@ public class PickupBehavior : MonoBehaviour
     void Update()
     {
         if(isPickedUp){
-            if(Input.GetButtonDown("Fire1")){
+            if(Input.GetButtonDown("Fire2")){
 
                 DropObject();
 
 
             }
 
-            if(Input.GetButtonDown("Fire2")){
+            if(Input.GetButtonDown("Fire1")){
 
                 ThrowObject();
 
@@ -47,8 +49,8 @@ public class PickupBehavior : MonoBehaviour
         }
         else{
 
-            if(Input.GetKeyDown(KeyCode.T) && throwObject != null){
-
+            if(Input.GetKeyDown(KeyCode.T) && isTeleportAllowed())
+            {
                 Teleport();
             }
 
@@ -61,7 +63,7 @@ public class PickupBehavior : MonoBehaviour
         
         if(other.CompareTag("ThrowObject")){
 
-            if(Input.GetKeyDown(KeyCode.Space) && !isPickedUp){
+            if(Input.GetKeyDown(KeyCode.E) && !isPickedUp){
                 PickupBox(other);
 
             }
@@ -72,6 +74,7 @@ public class PickupBehavior : MonoBehaviour
 
     private void PickupBox(Collider other)
     {
+        isPickedUp = true;
         AudioSource.PlayClipAtPoint(boxPickupSFX, transform.position);
 
         other.gameObject.transform.parent = cm.transform;
@@ -85,7 +88,7 @@ public class PickupBehavior : MonoBehaviour
         throwObject.transform.rotation = new Quaternion(0, 0, 0, 0);
         //throwObject.transform.localScale = new Vector3(0, 0, 0);
 
-        isPickedUp = true;
+        
         Debug.Log("Item Was Picked Up");
     }
 
@@ -100,9 +103,6 @@ public class PickupBehavior : MonoBehaviour
       
 
         isPickedUp = false;
-
-
-
     }
 
     private void ThrowObject(){
@@ -123,6 +123,8 @@ public class PickupBehavior : MonoBehaviour
 
     private void Teleport(){
 
+        lastTimeTeleported = Time.time;
+
         Debug.Log("Teleported!");
         AudioSource.PlayClipAtPoint(teleportSFX, transform.position);
 
@@ -132,5 +134,10 @@ public class PickupBehavior : MonoBehaviour
         cc.enabled = true;
         Debug.Log("Player Position: " + transform.position);
         Debug.Log("Child Position: " + throwObject.transform.position);
+    }
+
+    private bool isTeleportAllowed()
+    {
+        return(Time.time > lastTimeTeleported + teleportCooldown & throwObject != null);
     }
 }
