@@ -12,8 +12,10 @@ public class PickupBehavior : MonoBehaviour
     public AudioClip boxPickupSFX;
     public AudioClip boxThrowSFX;
     public AudioClip teleportSFX;
+    public AudioClip readSFX;
+
     public float teleportCooldown = 2f;
-    public Image note;
+    public Image helloNote;
     public Image reticleImage;
     public GameObject currentNote;
     public Text noteText;
@@ -34,8 +36,14 @@ public class PickupBehavior : MonoBehaviour
     {
         isPickedUp = false;
         cc = gameObject.GetComponent<CharacterController>();
-        note.gameObject.SetActive(true);
+
         newText = GameObject.FindGameObjectWithTag("NoteAsset").GetComponent<Text>();
+      //noteText = GameObject.FindGameObjectWithTag("NoteText").GetComponent<Text>();
+
+        helloNote = GameObject.FindGameObjectWithTag("NoteImage").GetComponent<Image>();
+        helloNote.gameObject.SetActive(true);
+
+        reticleImage = GameObject.FindGameObjectWithTag("Reticle").GetComponent<Image>();
 
 
         //child = GameObject.FindGameObjectWithTag("ThrowObject");
@@ -46,16 +54,19 @@ public class PickupBehavior : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            note.gameObject.SetActive(false);
+            helloNote.gameObject.SetActive(false);
         }
+
         if (Input.GetKeyDown(KeyCode.I))
         {
-            note.gameObject.SetActive(true);
+            helloNote.gameObject.SetActive(true);
         }
-        if (note.gameObject.activeSelf)
+
+        if (helloNote.gameObject.activeSelf)
         {
             reticleImage.gameObject.SetActive(false);
         }
+
         else
         {
             reticleImage.gameObject.SetActive(true);
@@ -94,14 +105,17 @@ public class PickupBehavior : MonoBehaviour
     private void FixedUpdate()
     {
         RaycastHit hit;
+
         if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
         {
             if (hit.collider.CompareTag("NoteAsset"))
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.Q))
                 {
                     newText = hit.transform.GetComponentInChildren<Text>();
                     noteText.text = newText.text;
+                    AudioSource.PlayClipAtPoint(readSFX, transform.position);
+
 
                     currentNote.SetActive(true);
                 }
