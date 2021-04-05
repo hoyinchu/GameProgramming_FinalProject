@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 2;
     public float gravity = 9.801f;
     public float airControl = 10;
+    public AudioClip stepSFX;
+
     CharacterController controller; 
     Vector3 input;
     Vector3 moveDirection;
@@ -44,6 +46,8 @@ public class PlayerController : MonoBehaviour
             if(Input.GetButton("Jump")) {
 
                 moveDirection.y = Mathf.Sqrt(2 * jumpHeight * gravity);
+                AudioSource.PlayClipAtPoint(stepSFX, transform.position);
+
 
             }
             else { 
