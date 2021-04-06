@@ -24,12 +24,13 @@ public class ButtonPress : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // display message on UI saying "Press E to press button"
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && !running)
             {
+                Debug.Log("button pressed");
+                running = !running;
                 foreach (GameObject go in animatedObjects)
                 {
-                    running = !running;
-                    Debug.Log("button pressed");
+                    go.GetComponent<Animator>().SetBool(triggerName, running);
                 }
             }
         }
