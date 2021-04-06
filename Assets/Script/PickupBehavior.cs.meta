@@ -3,7 +3,16 @@ guid: d9524bd2e760b4490b17d12dbf82716f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - cm: {instanceID: 0}
+  - boxPickupSFX: {fileID: 8300000, guid: 35a4a65a5ef85fb4083d607f2b88342b, type: 3}
+  - boxThrowSFX: {instanceID: 0}
+  - teleportSFX: {instanceID: 0}
+  - readSFX: {instanceID: 0}
+  - helloNote: {instanceID: 0}
+  - reticleImage: {instanceID: 0}
+  - currentNote: {instanceID: 0}
+  - noteText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
