@@ -32,6 +32,7 @@ public class PickupBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!PauseMenuBehavior.isGamePaused){
         if(isPickedUp){
             if(Input.GetButtonDown("Fire2")){
 
@@ -56,9 +57,12 @@ public class PickupBehavior : MonoBehaviour
 
 
         }
+        }
     }
 
     private void OnTriggerStay(Collider other){
+
+        if(!PauseMenuBehavior.isGamePaused){
 
         
         if(other.CompareTag("ThrowObject")){
@@ -68,6 +72,7 @@ public class PickupBehavior : MonoBehaviour
 
             }
 
+        }
         }
 
     }
