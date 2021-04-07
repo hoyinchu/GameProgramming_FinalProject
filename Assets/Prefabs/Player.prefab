@@ -115,9 +115,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpHeight: 10
+  jumpHeight: 1
   gravity: 9.801
   airControl: 10
+  stepSFX: {fileID: 8300000, guid: 16c31ee61c971444fa25d6413b3b42af, type: 3}
 --- !u!143 &3674959036234529744
 CharacterController:
   m_ObjectHideFlags: 0
@@ -153,6 +154,12 @@ MonoBehaviour:
   boxPickupSFX: {fileID: 8300000, guid: 45aa0be5c2aa48f47bd558dbcb9a5e82, type: 3}
   boxThrowSFX: {fileID: 8300000, guid: 17cc36884a6c60f4f812e95612d21223, type: 3}
   teleportSFX: {fileID: 8300000, guid: 35a4a65a5ef85fb4083d607f2b88342b, type: 3}
+  readSFX: {fileID: 0}
+  teleportCooldown: 2
+  helloNote: {fileID: 0}
+  reticleImage: {fileID: 0}
+  currentNote: {fileID: 0}
+  noteText: {fileID: 0}
 --- !u!135 &3674959036234529746
 SphereCollider:
   m_ObjectHideFlags: 0
