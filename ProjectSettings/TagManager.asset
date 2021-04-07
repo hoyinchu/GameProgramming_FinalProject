@@ -7,6 +7,9 @@ TagManager:
   - ThrowObject
   - cubeOnly
   - NoteAsset
+  - acid
+  - NoteImage
+  - Reticle
   layers:
   - Default
   - TransparentFX
