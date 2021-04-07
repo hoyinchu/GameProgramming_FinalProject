@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpHeight: 10
+  jumpHeight: 1
   gravity: 9.801
   airControl: 10
   stepSFX: {fileID: 8300000, guid: 16c31ee61c971444fa25d6413b3b42af, type: 3}
