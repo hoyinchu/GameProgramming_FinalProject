@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     public bool isGameOver = false; 
     public string nextLevel;
+    public Text gameOverText;
     //public Text winText;
     //public Text deadText;
     //public Image textBackground;
@@ -39,9 +40,10 @@ public class LevelManager : MonoBehaviour
 
          Debug.Log("Level Lost");
 
-        //deadText.gameObject.SetActive(true);
-        //textBackground.gameObject.SetActive(true);
-        //AudioSource.PlayClipAtPoint(lostSFX, Camera.main.transform.position);
+            //deadText.gameObject.SetActive(true);
+            //textBackground.gameObject.SetActive(true);
+            //AudioSource.PlayClipAtPoint(lostSFX, Camera.main.transform.position);
+            gameOverText.gameObject.SetActive(true);
 
         isGameOver = true;
 

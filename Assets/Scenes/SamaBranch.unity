@@ -9765,6 +9765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameOver: 0
   nextLevel: Level2
+  gameOverText: {fileID: 0}
 --- !u!4 &940979683
 Transform:
   m_ObjectHideFlags: 0
@@ -13341,7 +13342,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 91b7e74335f44c44c8dba8435bf6c3ab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5f70b1ca9acd74766a99a646d0fcff43, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19068,7 +19069,7 @@ PrefabInstance:
     - target: {fileID: 3674959036234529745, guid: 0122fd1498f8941f0af4853dfd9959ad,
         type: 3}
       propertyPath: jumpHeight
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3674959036234529746, guid: 0122fd1498f8941f0af4853dfd9959ad,
         type: 3}
@@ -19178,7 +19179,7 @@ PrefabInstance:
     - target: {fileID: 3674959036964715181, guid: 0122fd1498f8941f0af4853dfd9959ad,
         type: 3}
       propertyPath: mouseSensitivity
-      value: 100
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0122fd1498f8941f0af4853dfd9959ad, type: 3}
