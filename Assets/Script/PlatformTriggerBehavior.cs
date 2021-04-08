@@ -27,10 +27,10 @@ public class PlatformTriggerBehavior : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            other.transform.parent = transform.parent;
-        }
+        //if (other.gameObject.CompareTag("Player"))
+        //{
+        //    other.transform.parent = transform.parent;
+        //}
         if (other.gameObject.CompareTag("ThrowObject") && !PickupBehavior.isPickedUp)
         {
             // emptyObject is set as the parent of the box to prevent it from scaling to the scaling of the platform
@@ -42,10 +42,10 @@ public class PlatformTriggerBehavior : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            other.transform.parent = null;
-        }
+        //if (other.gameObject.CompareTag("Player"))
+        //{
+        //    other.transform.parent = null;
+        //}
         if (other.gameObject.CompareTag("ThrowObject") && (other.transform.parent != cm.transform))
         {
             other.transform.parent = null;

@@ -10,6 +10,8 @@ TagManager:
   - acid
   - NoteImage
   - Reticle
+  - WanderPoint
+  - GameOverText
   layers:
   - Default
   - TransparentFX

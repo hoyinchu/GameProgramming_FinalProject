@@ -116,14 +116,17 @@ public class PickupBehavior : MonoBehaviour
                     noteText.text = newText.text;
                     AudioSource.PlayClipAtPoint(readSFX, transform.position);
 
-
                     currentNote.SetActive(true);
                 }
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    currentNote.SetActive(false);
-                }
+               
             }
+            
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("Close note");
+            currentNote.SetActive(false);
         }
     }
 

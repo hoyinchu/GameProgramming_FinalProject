@@ -70,6 +70,15 @@ public class PlayerController : MonoBehaviour
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         isOnSlope = hit.normal.y <= maxSlopeAngle;
+        if (controller.isGrounded && hit.transform.tag == "MovingPlatform")
+        {
+            transform.SetParent(hit.transform);
+        }
+        else if (controller.isGrounded && hit.transform.tag != "MovingPlatform")
+        {
+            transform.parent = null;
+        }
+        
     }
 
 }
