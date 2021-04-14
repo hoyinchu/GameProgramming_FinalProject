@@ -10,12 +10,16 @@ public class LevelManager : MonoBehaviour
     public bool isGameOver = false; 
     public string nextLevel;
     public Text gameOverText;
+
+    public static Text noteText;
+    public static GameObject currentNote;
+
     //public Text winText;
     //public Text deadText;
     //public Image textBackground;
     //public AudioClip lostSFX;
     //public AudioClip winSFX;
-   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +27,9 @@ public class LevelManager : MonoBehaviour
         //winText.gameObject.SetActive(false);
         //deadText.gameObject.SetActive(false);
         //textBackground.gameObject.SetActive(false);
+        currentNote = GameObject.FindGameObjectWithTag("CurrentNote");
+        noteText = GameObject.FindGameObjectWithTag("NoteText").GetComponent<Text>();
+        currentNote.SetActive(false);
 
     }
 
@@ -30,7 +37,16 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
 
+    }
 
+    public void ChangeNoteText(string note)
+    {
+        noteText.text = note;
+    }
+
+    public void SetCurrentNoteStatus(bool status)
+    {
+        currentNote.SetActive(status);
     }
 
 

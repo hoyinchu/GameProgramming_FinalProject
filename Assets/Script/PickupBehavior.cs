@@ -12,13 +12,9 @@ public class PickupBehavior : MonoBehaviour
     public AudioClip boxPickupSFX;
     public AudioClip boxThrowSFX;
     public AudioClip teleportSFX;
-    public AudioClip readSFX;
 
     public float teleportCooldown = 2f;
-    public Image helloNote;
-    public Image reticleImage;
-    public GameObject currentNote;
-    public Text noteText;
+    
 
 
 
@@ -26,7 +22,7 @@ public class PickupBehavior : MonoBehaviour
     GameObject throwObject;
     CharacterController cc;
     Rigidbody rb;
-    Text newText;
+ 
 
     private float lastTimeTeleported = 0f;
 
@@ -37,13 +33,7 @@ public class PickupBehavior : MonoBehaviour
         isPickedUp = false;
         cc = gameObject.GetComponent<CharacterController>();
 
-        newText = GameObject.FindGameObjectWithTag("NoteAsset").GetComponent<Text>();
-      //noteText = GameObject.FindGameObjectWithTag("NoteText").GetComponent<Text>();
 
-        helloNote = GameObject.FindGameObjectWithTag("NoteImage").GetComponent<Image>();
-        helloNote.gameObject.SetActive(true);
-
-        reticleImage = GameObject.FindGameObjectWithTag("Reticle").GetComponent<Image>();
 
 
         //child = GameObject.FindGameObjectWithTag("ThrowObject");
@@ -52,25 +42,6 @@ public class PickupBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            helloNote.gameObject.SetActive(false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            helloNote.gameObject.SetActive(true);
-        }
-
-        if (helloNote.gameObject.activeSelf)
-        {
-            reticleImage.gameObject.SetActive(false);
-        }
-
-        else
-        {
-            reticleImage.gameObject.SetActive(true);
-        }
 
         if (isPickedUp)
         {
@@ -87,7 +58,6 @@ public class PickupBehavior : MonoBehaviour
 
                 ThrowObject();
 
-
             }
         }
         else
@@ -97,38 +67,10 @@ public class PickupBehavior : MonoBehaviour
             {
                 Teleport();
             }
-
-
         }
     }
 
-    private void FixedUpdate()
-    {
-        RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
-        {
-            if (hit.collider.CompareTag("NoteAsset"))
-            {
-                if (Input.GetKeyDown(KeyCode.Q))
-                {
-                    newText = hit.transform.GetComponentInChildren<Text>();
-                    noteText.text = newText.text;
-                    AudioSource.PlayClipAtPoint(readSFX, transform.position);
-
-                    currentNote.SetActive(true);
-                }
-               
-            }
-            
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Debug.Log("Close note");
-            currentNote.SetActive(false);
-        }
-    }
 
     private void OnTriggerStay(Collider other)
     {
