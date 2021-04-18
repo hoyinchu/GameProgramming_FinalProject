@@ -12,6 +12,8 @@ TagManager:
   - Reticle
   - WanderPoint
   - GameOverText
+  - CurrentNote
+  - NoteText
   layers:
   - Default
   - TransparentFX
