@@ -5,34 +5,54 @@ using UnityEngine;
 public class ButtonPress : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject[] animatedObjects;
+    public GameObject target;
+    public MonoBehaviour[] scriptTargets;
     public string triggerName;
     bool running = false;
+    bool playerAtButton = false;
     void Start()
     {
-        
+        scriptTargets = target.GetComponents<MonoBehaviour>();
+        foreach (MonoBehaviour script in scriptTargets)
+        {
+            script.enabled = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.E) && playerAtButton)
+        {
+            if (!running)
+            {
+                foreach (MonoBehaviour script in scriptTargets)
+                {
+                    script.enabled = true;
+                }
+            } else
+            {
+                foreach (MonoBehaviour script in scriptTargets)
+                {
+                    script.enabled = false;
+                }
+            }
+            running = !running;
+        }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            // display message on UI saying "Press E to press button"
-            if (Input.GetKeyDown(KeyCode.E) && !running)
-            {
-                Debug.Log("button pressed");
-                running = !running;
-                foreach (GameObject go in animatedObjects)
-                {
-                    go.GetComponent<Animator>().SetBool(triggerName, running);
-                }
-            }
+            playerAtButton = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerAtButton = false;
         }
     }
 }
