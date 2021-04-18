@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameOver: 0
   nextLevel: 
+  gameOverText: {fileID: 0}
