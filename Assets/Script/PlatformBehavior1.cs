@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformBehavior : MonoBehaviour
+public class PlatformBehavior1 : MonoBehaviour
 {
     // The distance in which the platform will move to
     public float moveXDistance = 0;
@@ -28,7 +28,7 @@ public class PlatformBehavior : MonoBehaviour
 
     private void Update()
     {
-        /*float newX = currPos.x + Time.deltaTime * moveXSpeed;
+        float newX = currPos.x + Time.deltaTime * moveXSpeed;
         float newY = currPos.y + Time.deltaTime * moveYSpeed;
         float newZ = currPos.z + Time.deltaTime * moveZSpeed;
 
@@ -50,20 +50,16 @@ public class PlatformBehavior : MonoBehaviour
         Vector3 newPos = new Vector3(newX, newY, newZ);
 
         transform.position = newPos;
-        currPos = newPos;*/
+        currPos = newPos;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
 
-        float newX = startPos.x + (Mathf.Sin(Time.time * moveXSpeed) * moveXDistance);
+        /*float newX = startPos.x + (Mathf.Sin(Time.time * moveXSpeed) * moveXDistance);
         float newY = startPos.y + (Mathf.Sin(Time.time * moveYSpeed) * moveYDistance);
-        float newZ = startPos.z + (Mathf.Sin(Time.time * moveZSpeed) * moveZDistance);
-
-        Vector3 newPos = new Vector3(newX, newY, newZ);
-
-        transform.position = newPos;
+        float newZ = startPos.z + (Mathf.Sin(Time.time * moveZSpeed) * moveZDistance);*/
 
     }
 
