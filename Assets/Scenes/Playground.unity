@@ -230,6 +230,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPlatformWithAsset
       objectReference: {fileID: 0}
+    - target: {fileID: 69443437602882930, guid: 83058932af9e941c69073adabc31680e,
+        type: 3}
+      propertyPath: moveXDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 69443437602882930, guid: 83058932af9e941c69073adabc31680e,
+        type: 3}
+      propertyPath: moveZDistance
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83058932af9e941c69073adabc31680e, type: 3}
 --- !u!1 &876191797
