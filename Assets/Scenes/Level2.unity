@@ -728,6 +728,27 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2069091834959068888, guid: 57fc443a2dc404474b1a56840a549559,
+        type: 3}
+      propertyPath: m_text
+      value: 'Walk: WASD
+
+        Jump: Space
+
+        Pick Up Cube/Use button: E
+
+        Teleport:
+        T
+
+        Throw Cube: Left Click
+
+        Drop Cube: Right Click
+
+        Read
+        Notes: Q or Esc
+
+        Pause: P or Esc'
+      objectReference: {fileID: 0}
     - target: {fileID: 4048361312242430103, guid: 57fc443a2dc404474b1a56840a549559,
         type: 3}
       propertyPath: m_Pivot.x

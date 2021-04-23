@@ -10,8 +10,15 @@ public class ButtonPress : MonoBehaviour
     public string triggerName;
     bool running = false;
     bool playerAtButton = false;
+    public GameObject player;
+    public static bool isPressed = false;
+    public AudioClip clickSFX;
+
+
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+
         scriptTargets = target.GetComponents<MonoBehaviour>();
         foreach (MonoBehaviour script in scriptTargets)
         {
@@ -24,6 +31,8 @@ public class ButtonPress : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && playerAtButton)
         {
+            isPressed = true;
+            AudioSource.PlayClipAtPoint(clickSFX, player.transform.position);
             if (!running)
             {
                 foreach (MonoBehaviour script in scriptTargets)
