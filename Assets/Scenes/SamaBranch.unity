@@ -11076,6 +11076,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1319828895}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1320247990 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1056153996141526, guid: cf5c497dab271a94ea67c68a4ff17901,
+    type: 3}
+  m_PrefabInstance: {fileID: 1556566305}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1320247991
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320247990}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20, y: 40, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1322327092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13024,6 +13043,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: GateWayHugeTeleporter
       objectReference: {fileID: 0}
+    - target: {fileID: 1056153996141526, guid: cf5c497dab271a94ea67c68a4ff17901, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225294785035114, guid: cf5c497dab271a94ea67c68a4ff17901, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481850816568148, guid: cf5c497dab271a94ea67c68a4ff17901, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845898975305046, guid: cf5c497dab271a94ea67c68a4ff17901, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903499047023186, guid: cf5c497dab271a94ea67c68a4ff17901, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1903499047023186, guid: cf5c497dab271a94ea67c68a4ff17901, type: 3}
       propertyPath: m_TagString
       value: cubeOnly
@@ -13083,6 +13122,11 @@ PrefabInstance:
     - target: {fileID: 4581174368300158, guid: cf5c497dab271a94ea67c68a4ff17901, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82544721413383928, guid: cf5c497dab271a94ea67c68a4ff17901,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.237
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf5c497dab271a94ea67c68a4ff17901, type: 3}
@@ -17655,6 +17699,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Teleporter
       objectReference: {fileID: 0}
+    - target: {fileID: 1960551388234716602, guid: 7d5da0027b04f48c0b0f9ce19b68a1c2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7378147206958757908, guid: 7d5da0027b04f48c0b0f9ce19b68a1c2,
         type: 3}
       propertyPath: m_Size.x
@@ -18020,8 +18069,10 @@ PrefabInstance:
 
         Drop Cube: Right Click
 
-        Read
-        Notes: Q or Esc
+        Retrieve
+        Cube: R
+
+        Read Notes: Q or Esc
 
         Pause: P or Esc'
       objectReference: {fileID: 0}
@@ -18134,6 +18185,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PauseMenuCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048361313447449649, guid: 57fc443a2dc404474b1a56840a549559,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57fc443a2dc404474b1a56840a549559, type: 3}

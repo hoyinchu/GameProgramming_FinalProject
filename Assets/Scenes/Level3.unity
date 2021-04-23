@@ -11885,8 +11885,10 @@ MonoBehaviour:
 
     Drop Cube: Right Click
 
-    Read Notes: Q
-    or Esc
+    Retrieve Cube:
+    R
+
+    Read Notes: Q or Esc
 
     Pause: P or Esc'
   m_isRightToLeft: 0
