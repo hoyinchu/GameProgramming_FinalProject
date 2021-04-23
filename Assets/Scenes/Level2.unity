@@ -748,8 +748,10 @@ PrefabInstance:
 
         Drop Cube: Right Click
 
-        Read
-        Notes: Q or Esc
+        Retrieve
+        Cube: R
+
+        Read Notes: Q or Esc
 
         Pause: P or Esc'
       objectReference: {fileID: 0}
@@ -862,6 +864,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PauseMenuCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048361313447449649, guid: 57fc443a2dc404474b1a56840a549559,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57fc443a2dc404474b1a56840a549559, type: 3}
