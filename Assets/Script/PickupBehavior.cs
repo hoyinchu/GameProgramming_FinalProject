@@ -13,12 +13,17 @@ public class PickupBehavior : MonoBehaviour
     public AudioClip boxThrowSFX;
     public AudioClip teleportSFX;
 
+    public float localY = 0;
+    public float localX = 0;
+    public float localYrot = 0;
+
     public float teleportCooldown = 2f;
     
 
 
 
     public static bool isPickedUp;
+    bool hasBeenPickedUp;
     GameObject throwObject;
     CharacterController cc;
     Rigidbody rb;
@@ -31,6 +36,7 @@ public class PickupBehavior : MonoBehaviour
     void Start()
     {
         isPickedUp = false;
+        hasBeenPickedUp = false;
         cc = gameObject.GetComponent<CharacterController>();
 
 
@@ -67,6 +73,11 @@ public class PickupBehavior : MonoBehaviour
             {
                 Teleport();
             }
+
+            if (Input.GetKeyDown(KeyCode.R) && hasBeenPickedUp)
+            {
+                RetrieveObject();
+            }
         }
     }
 
@@ -92,6 +103,7 @@ public class PickupBehavior : MonoBehaviour
     private void PickupBox(Collider other)
     {
         isPickedUp = true;
+        hasBeenPickedUp = true;
         AudioSource.PlayClipAtPoint(boxPickupSFX, transform.position);
 
         other.gameObject.transform.parent = cm.transform;
@@ -101,8 +113,8 @@ public class PickupBehavior : MonoBehaviour
         rb.isKinematic = true;
         //rb.useGravity = false;
 
-        throwObject.transform.localPosition = new Vector3(0, 0, 1);
-        throwObject.transform.rotation = new Quaternion(0, 0, 0, 0);
+        throwObject.transform.localPosition = new Vector3(.5f, -.5f, 1);
+        throwObject.transform.rotation = new Quaternion(0, -45, 0, 0);
         //throwObject.transform.localScale = new Vector3(0, 0, 0);
 
 
@@ -128,7 +140,8 @@ public class PickupBehavior : MonoBehaviour
 
         Debug.Log("Item Was Thrown");
         AudioSource.PlayClipAtPoint(boxThrowSFX, transform.position);
-
+        throwObject.transform.localPosition = new Vector3(0, 0, 1);
+        throwObject.transform.rotation = new Quaternion(0, 0, 0, 0);
         //rb.useGravity = true;
         rb.isKinematic = false;
 
@@ -138,6 +151,13 @@ public class PickupBehavior : MonoBehaviour
         //child = null;
         isPickedUp = false;
 
+        
+    }
+
+    private void RetrieveObject()
+    { 
+        Debug.Log("Object was retrieved");
+        PickupBox(throwObject.GetComponent<Collider>());
     }
 
     private void Teleport()
