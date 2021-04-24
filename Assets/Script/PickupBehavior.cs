@@ -18,9 +18,8 @@ public class PickupBehavior : MonoBehaviour
     public float localYrot = 0;
 
     public float teleportCooldown = 2f;
-    
 
-
+    bool tryingToPickUp = false;
 
     public static bool isPickedUp;
     bool hasBeenPickedUp;
@@ -79,6 +78,8 @@ public class PickupBehavior : MonoBehaviour
                 RetrieveObject();
             }
         }
+
+        tryingToPickUp = Input.GetKeyDown(KeyCode.E);
     }
 
 
@@ -90,7 +91,7 @@ public class PickupBehavior : MonoBehaviour
         if (other.CompareTag("ThrowObject"))
         {
 
-            if (Input.GetKeyDown(KeyCode.E) && !isPickedUp)
+            if (tryingToPickUp && !isPickedUp)
             {
                 PickupBox(other);
 

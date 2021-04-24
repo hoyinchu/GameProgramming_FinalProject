@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000bafe9496de4690ac0dea6dddf7b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 8
   jumpHeight: 1
   gravity: 9.801
   airControl: 10
@@ -149,11 +149,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9524bd2e760b4490b17d12dbf82716f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 20
+  throwForce: 24
   cm: {fileID: 3674959036964715179}
-  boxPickupSFX: {fileID: 8300000, guid: b6289259d111f634baff938ad939dccc, type: 3}
+  boxPickupSFX: {fileID: 8300000, guid: 1954de55c2043af498d8d4ae58562da2, type: 3}
   boxThrowSFX: {fileID: 8300000, guid: 17cc36884a6c60f4f812e95612d21223, type: 3}
   teleportSFX: {fileID: 8300000, guid: 35a4a65a5ef85fb4083d607f2b88342b, type: 3}
+  localY: 0
+  localX: 0
+  localYrot: 0
   teleportCooldown: 2
 --- !u!135 &3674959036234529746
 SphereCollider:
@@ -166,7 +169,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 5.32
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3674959036234529748
 Rigidbody:

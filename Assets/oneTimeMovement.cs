@@ -11,9 +11,7 @@ public class oneTimeMovement : MonoBehaviour
     public float moveZDistance = 0;
 
     // The speed in which the platform will move with in that direction
-    public float moveXSpeed = 1;
-    public float moveYSpeed = 1;
-    public float moveZSpeed = 1;
+    public float moveSpeed = 1;
 
     Vector3 startPos;
     Vector3 destPos;
@@ -46,7 +44,7 @@ public class oneTimeMovement : MonoBehaviour
             currPos.z += moveZSpeed * Time.deltaTime;
         }
         */
-        transform.position = Vector3.Lerp(transform.position, destPos, Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, destPos, Time.deltaTime * moveSpeed);
 
     }
 }
