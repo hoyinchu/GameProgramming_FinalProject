@@ -11,8 +11,10 @@ public class ButtonPress : MonoBehaviour
     bool running = false;
     bool playerAtButton = false;
     public GameObject player;
-    public static bool isPressed = false;
+    bool isPressed = false;
     public AudioClip clickSFX;
+
+    public bool oneTimePress = false;
 
 
     void Start()
@@ -29,7 +31,7 @@ public class ButtonPress : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerAtButton)
+        if (Input.GetKeyDown(KeyCode.E) && playerAtButton && ((oneTimePress && !isPressed) || !oneTimePress))
         {
             isPressed = true;
             AudioSource.PlayClipAtPoint(clickSFX, player.transform.position);
